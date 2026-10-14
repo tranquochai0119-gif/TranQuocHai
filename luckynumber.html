@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 5: Đoán số may mắn</title>
+</head>
+<body>
+
+<div class="container">
+    <h2> Đoán số may mắn</h2>
+    <label for="userNumber">Mời bạn nhập một số từ 1 đến 10:</label><br>
+    <input type="number" id="userNumber" min="1" max="10" placeholder="Nhập số (1-10)">
+    <button onclick="doanSo()">Đoán số</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function doanSo() {
+        const userInput = parseInt(document.getElementById("userNumber").value);
+        const resultDiv = document.getElementById("result");
+        if (isNaN(userInput) || userInput < 1 || userInput > 10) {
+            resultDiv.style.color = "orange";
+            resultDiv.innerHTML = "Vui lòng nhập một số hợp lệ từ 1 đến 10!";
+            return;
+        }
+        // 2. Máy sinh ngẫu nhiên số từ 1 đến 10
+        const randomNumber = Math.floor(Math.random() * 10) + 1;
+        // 3. So sánh và hiển thị thông báo
+        if (userInput === randomNumber) {
+            resultDiv.style.color = "green";
+            resultDiv.innerHTML = `Số của máy là: ${randomNumber}.<br>🎉 Chúc mừng! Bạn đã thắng!`;
+        } else {
+            resultDiv.style.color = "red";
+            resultDiv.innerHTML = `Số của máy là: ${randomNumber}.<br>😢 Chưa may mắn, chúc bạn may mắn lần sau!`;
+        }
+    }
+</script>
+
+</body>
+</html>

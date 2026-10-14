@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xếp Loại Học Lực</title>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Xếp Loại Học Lực</h2>
+        <label for="">Nhap vao diem cua ban (0 - 100)</label>
+        <input type="number" id="diemInput">
+        <button onclick="xepLoai()">Xem kết quả</button>
+        <div class="result" id="ketQua"></div>
+    </div>
+
+    <script>
+        function xepLoai() {
+            let diem = parseFloat(document.getElementById('diemInput').value);
+            let ketQuaElement = document.getElementById('ketQua');
+
+            if (isNaN(diem) , diem < 0 , diem > 100) {
+                ketQuaElement.style.color = 'red';
+                ketQuaElement.innerText = "Vui lòng nhập điểm hợp lệ (0 - 100)!";
+            } else {
+                ketQuaElement.style.color = 'green';
+                if (diem >= 90) {
+                    ketQuaElement.innerText = "Xếp loại: A";
+                } else if (diem >= 80) {
+                    ketQuaElement.innerText = "Xếp loại: B";
+                } else if (diem >= 70) {
+                    ketQuaElement.innerText = "Xếp loại: C";
+                } else if (diem >= 60) {
+                    ketQuaElement.innerText = "Xếp loại: D";
+                } else {
+                    ketQuaElement.innerText = "Xếp loại: F";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
