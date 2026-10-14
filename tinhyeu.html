@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>❤ Xem Boi Tinh Yeu❤</h2>
+    <label for="">Nhap ten nguoi ay</label>
+    <input type="text" id="tennguoiay">
+    <br><br>
+    <label for="">Nhap ten cua ban</label>
+    <input type="text" id="tenban">
+    <br><br>
+    <button onclick="xemboi()">Xem ket qua</button>
+    <h3 id="ketqua"></h3>
+    <script>
+        function xemboi(){
+        let tenBan = document.getElementById("tenban").value;
+        let tenNguoiAy = document.getElementById("tennguoiay").value;
+        let diem = Math.floor(Math.random()*100) +1;
+        if(diem>50){
+            document.getElementById("ketqua").innerHTML = tenBan + "💞" + tenNguoiAy + ".Diem: " + diem + ". Chuc Mung, Hai Ban Rat Hop"
+        }
+        else{
+            document.getElementById("ketqua").innerHTML = tenBan + "💞" + tenNguoiAy + ".Diem: " + diem + ". Chuc Mung Ban La Lop"
+        }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Chuong Tinh Tinh Tuoi</h2>
+    <label for="">Nhap Vao Nam Xinh Cua Ban</label>
+    <input type="number" id="namsinh">
+    <br><br>
+    <button onclick="tinhtuoi()">tinh tuoi</button>
+    <p id="ketqua"></p>
+    <script>
+        //viet code java s
+        function tinhtuoi() {
+            let thoidiem = document.getElementById("namsinh").value;
+            let namhientai = 2026;
+            let tuoicuaban = namhientai - thoidiem;
+            document.getElementById("ketqua").innerHTML = "Tuoi cua ban: " + tuoicuaban;
+        }
+    </script>
+</body>
+</html>

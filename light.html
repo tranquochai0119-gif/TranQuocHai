@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Chuong Trinh Bat / Tat Bong Den</h2>
+    <img id="bulb" width="120px" src="./bulboff.gif" alt="light">
+    <br> <br>
+    <button onclick="toggleLight()">on / off</button>
+    <!--Code Javascript-->
+    <script>
+        // viet code Java s 
+        function toggleLight() {
+            // anh xa
+            let toggle = document.getElementById("bulb");
+            if(toggle.src.includes("bulboff.gif")) {
+                toggle.src = "bulbon.gif" }
+            else {
+                toggle.src = "bulboff.gif"
+            }
+        }
+    </script>
+</body>
+</html>
