@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Xúc Xắc May Mắn</h1>
+
+        <!-- Khung hiển thị điểm xúc xắc -->
+        <div id="dice" class="dice-display">🎲</div>
+
+        <!-- Nút bấm -->
+        <button class="btn-roll" onclick="rollDice()">🎲 Lắc Xúc Xắc</button>
+
+        <!-- Thông báo kết quả -->
+        <div class="result-text" id="result">Nhấn nút để thử vận may!</div>
+    </div>
+
+    <script>
+        // Mảng chứa ký tự Unicode biểu tượng chấm xúc xắc
+        const diceFaces = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+
+        function rollDice() {
+            const diceElement = document.getElementById('dice');
+            const resultElement = document.getElementById('result');
+
+            // Thêm class hiệu ứng rung lắc
+            diceElement.classList.add('shake');
+
+            // Đợi hiệu ứng xoay kết thúc rồi mới hiển thị số ngẫu nhiên
+            setTimeout(() => {
+                // Sinh số ngẫu nhiên từ 1 đến 6
+                const randomNumber = Math.floor(Math.random() * 6) + 1;
+
+                // Hiển thị ký tự mặt xúc xắc tương ứng
+                diceElement.innerText = diceFaces[randomNumber - 1];
+
+                // Hiển thị kết quả bằng chữ
+                resultElement.innerHTML = `Bạn vừa gieo được: <span class="highlight">${randomNumber}</span> điểm!`;
+
+                // Bỏ class hiệu ứng để lần sau có thể bấm tiếp
+                diceElement.classList.remove('shake');
+            }, 500);
+        }
+    </script>
+</body>
+</html>

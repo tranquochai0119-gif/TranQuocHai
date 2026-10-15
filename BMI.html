@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 14. Tính chỉ số BMI</title>
+</head>
+<body>
+
+    <h2>Tính chỉ số BMI</h2>
+
+    <div>
+        <label for="height">Chiều cao (m):</label>
+        <input type="number" id="height" step="0.01" placeholder="Ví dụ: 1.70">
+    </div>
+    <br>
+    <div>
+        <label for="weight">Cân nặng (kg):</label>
+        <input type="number" id="weight" step="0.1" placeholder="Ví dụ: 65">
+    </div>
+    <br>
+    <button onclick="calculateBMI()">Tính BMI</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateBMI() {
+            const heightVal = document.getElementById('height').value;
+            const weightVal = document.getElementById('weight').value;
+            const resultElement = document.getElementById('result');
+
+            // Kiểm tra dữ liệu hợp lệ (không để trống, phải là số hợp lệ)
+            if (heightVal === "" || weightVal === "") {
+                resultElement.innerText = "Vui lòng nhập đầy đủ chiều cao và cân nặng.";
+                return;
+            }
+
+            const height = parseFloat(heightVal);
+            const weight = parseFloat(weightVal);
+
+            // Kiểm tra giá trị chiều cao, cân nặng phải lớn hơn 0
+            if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
+                resultElement.innerText = "Dữ liệu không hợp lệ! Chiều cao và cân nặng phải lớn hơn 0.";
+                return;
+            }
+
+            // Tính BMI
+            const bmiRaw = weight / (height * height);
+            const bmi = bmiRaw.toFixed(2); // Làm tròn 2 chữ số thập phân
+
+            // Đánh giá kết quả
+            let category = "";
+            if (bmiRaw < 18.5) {
+                category = "Gầy";
+            } else if (bmiRaw < 24.9) {
+                category = "Bình thường";
+            } else if (bmiRaw < 29.9) {
+                category = "Thừa cân";
+            } else {
+                category = "Béo phì";
+            }
+
+            // Hiển thị kết quả
+            resultElement.innerText = `Chỉ số BMI của bạn là: ${bmi} - Đánh giá: ${category}`;
+        }
+    </script>
+
+</body>
+</html>

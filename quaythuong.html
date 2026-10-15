@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quay Thưởng May Mắn</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎁 Quay Thưởng May Mắn</h1>
+
+        <!-- Khung hiển thị kết quả phần quà -->
+        <div class="prize-box">
+            <div id="prize-display" class="prize-text">❓ Chưa quay</div>
+        </div>
+
+        <!-- Nút bấm quay -->
+        <button id="spin-btn" class="btn-spin" onclick="spin()">🎉 QUAY NGAY</button>
+
+        <!-- Danh sách các phần quà -->
+        <div class="prize-list">
+            <h3>Cơ cấu giải thưởng:</h3>
+            <ul>
+                <li>📱 iPhone 16 Pro</li>
+                <li>💻 Laptop Gaming</li>
+                <li>🎧 Tai nghe Bluetooth</li>
+                <li>💵 Voucher 500k</li>
+                <li>🥤 Ly trà sữa</li>
+                <li>😅 Chúc bạn may mắn lần sau</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Mảng danh sách phần quà
+        const prizes = [
+            "📱 iPhone 16 Pro Max",
+            "💻 Laptop Gaming",
+            "🎧 Tai nghe Bluetooth",
+            "💵 Voucher 500.000đ",
+            "🥤 Ly Trà Sữa Size L",
+            "😅 Chúc bạn may mắn lần sau!"
+        ];
+
+        function spin() {
+            const display = document.getElementById('prize-display');
+            const btn = document.getElementById('spin-btn');
+
+            // Khóa nút trong lúc đang quay
+            btn.disabled = true;
+
+            let count = 0;
+            const totalSpeed = 20; // Số lần đổi chữ nhanh trước khi dừng
+
+            // Tạo hiệu ứng nhảy quà liên tục tạo cảm giác hồi hộp
+            const interval = setInterval(() => {
+                const randomTemp = prizes[Math.floor(Math.random() * prizes.length)];
+                display.innerText = randomTemp;
+                count++;
+
+                // Khi quay đủ số lần thì dừng lại và chốt phần thưởng
+                if (count >= totalSpeed) {
+                    clearInterval(interval);
+
+                    // Chọn phần quà ngẫu nhiên chính thức
+                    const finalPrize = prizes[Math.floor(Math.random() * prizes.length)];
+                    display.innerText = finalPrize;
+
+                    // Mở lại nút quay
+                    btn.disabled = false;
+                }
+            }, 80); // Đổi chữ mỗi 80 millisecond
+        }
+    </script>
+
+</body>
+</html>

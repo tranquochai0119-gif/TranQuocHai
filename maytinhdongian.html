@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="calculator-card">
+        <h1>🧮 Máy Tính Đơn Giản</h1>
+
+        <!-- Nhập số thứ nhất -->
+        <div class="input-group">
+            <label for="num1">Số thứ nhất:</label>
+            <input type="number" id="num1" placeholder="Nhập số thứ nhất...">
+        </div>
+
+        <!-- Nhập số thứ hai -->
+        <div class="input-group">
+            <label for="num2">Số thứ hai:</label>
+            <input type="number" id="num2" placeholder="Nhập số thứ hai...">
+        </div>
+
+        <!-- 4 Nút phép tính -->
+        <div class="buttons-grid">
+            <button class="btn-op" onclick="calculate('+')">+</button>
+            <button class="btn-op" onclick="calculate('-')">-</button>
+            <button class="btn-op" onclick="calculate('*')">×</button>
+            <button class="btn-op" onclick="calculate('/')">÷</button>
+        </div>
+
+        <!-- Khung kết quả -->
+        <div class="result-box">
+            <div class="result-title">Kết quả:</div>
+            <div id="result" class="result-value">---</div>
+        </div>
+    </div>
+
+    <script>
+        function calculate(operator) {
+            // Lấy giá trị chuỗi từ 2 ô input
+            const val1 = document.getElementById('num1').value;
+            const val2 = document.getElementById('num2').value;
+            const resultElement = document.getElementById('result');
+
+            // Kiểm tra xem người dùng đã nhập đủ số chưa
+            if (val1 === "" || val2 === "") {
+                resultElement.innerText = "Vui lòng nhập đủ 2 số!";
+                resultElement.classList.add('error');
+                return;
+            }
+
+            // Chuyển kiểu dữ liệu từ chuỗi sang số thực
+            const num1 = parseFloat(val1);
+            const num2 = parseFloat(val2);
+            let result = 0;
+
+            // Xóa class lỗi cũ (nếu có)
+            resultElement.classList.remove('error');
+
+            // Xử lý từng phép tính dựa vào toán tử truyền vào
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 === 0) {
+                        resultElement.innerText = "Không thể chia cho 0!";
+                        resultElement.classList.add('error');
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+            }
+
+            // Hiển thị kết quả (làm tròn tối đa 4 chữ số thập phân nếu là số thập phân dài)
+            resultElement.innerText = Number.isInteger(result) ? result : result.toFixed(4);
+        }
+    </script>
+</body>
+</html>

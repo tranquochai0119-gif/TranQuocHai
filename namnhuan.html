@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 12. Kiểm tra năm nhuận</title>
+</head>
+<body>
+
+    <h2>Kiểm tra năm nhuận</h2>
+
+    <label for="year">Nhập năm:</label>
+    <input type="number" id="year">
+    <button onclick="checkLeapYear()">Kiểm tra</button>
+
+    <p id="result"></p>
+
+    <script>
+        function checkLeapYear() {
+            const yearVal = document.getElementById('year').value;
+            const resultElement = document.getElementById('result');
+
+            if (yearVal === "") {
+                resultElement.innerText = "Vui lòng nhập năm.";
+                return;
+            }
+
+            const year = parseInt(yearVal);
+
+            // Năm nhuận chia hết cho 400 HOẶC (chia hết cho 4 và không chia hết cho 100)
+            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                resultElement.innerText = "Năm " + year + " là năm nhuận.";
+            } else {
+                resultElement.innerText = "Năm " + year + " không phải là năm nhuận.";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trò chơi Oẳn Tù Tì</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Oẳn Tù Tì</h1>
+
+        <!-- 3 nút lựa chọn -->
+        <div class="choices-btn">
+            <button class="btn" onclick="playGame('Đá')">✊ Đá</button>
+            <button class="btn" onclick="playGame('Giấy')">✋ Giấy</button>
+            <button class="btn" onclick="playGame('Kéo')">✌️ Kéo</button>
+        </div>
+
+        <!-- Khung hiển thị kết quả -->
+        <div class="display-box">
+            <div class="player-choice">Bạn chọn: <span id="user-choice" class="choice-text">---</span></div>
+            <div class="bot-choice">Máy chọn: <span id="bot-choice" class="choice-text">---</span></div>
+            <div id="result-message" class="result">Hãy chọn một hình!</div>
+        </div>
+    </div>
+
+    <script>
+        function playGame(playerChoice) {
+            // Danh sách các lựa chọn
+            const choices = ['Đá', 'Giấy', 'Kéo'];
+
+            // Máy chọn ngẫu nhiên
+            const randomIndex = Math.floor(Math.random() * 3);
+            const botChoice = choices[randomIndex];
+
+            // Cập nhật lên giao diện
+            document.getElementById('user-choice').innerText = playerChoice;
+            document.getElementById('bot-choice').innerText = botChoice;
+
+            const resultElement = document.getElementById('result-message');
+
+            // Xóa các class kết quả cũ
+            resultElement.className = 'result';
+
+            // Xử lý logic Thắng / Thua / Hòa
+            if (playerChoice === botChoice) {
+                resultElement.innerText = "HÒA NHA!";
+                resultElement.classList.add('draw');
+            } else if (
+                (playerChoice === 'Đá' && botChoice === 'Kéo') ||
+                (playerChoice === 'Giấy' && botChoice === 'Đá') ||
+                (playerChoice === 'Kéo' && botChoice === 'Giấy')
+            ) {
+                resultElement.innerText = "BẠN THẮNG! 🎉";
+                resultElement.classList.add('win');
+            } else {
+                resultElement.innerText = "BẠN THUA! 😿";
+                resultElement.classList.add('lose');
+            }
+        }
+    </script>
+
+</body>
+</html>

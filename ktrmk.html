@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 11. Kiểm tra mật khẩu</title>
+</head>
+<body>
+
+    <h2>Kiểm tra mật khẩu</h2>
+
+    <label for="password">Nhập mật khẩu:</label>
+    <input type="password" id="password">
+    <button onclick="checkPassword()">Kiểm tra</button>
+
+    <p id="result"></p>
+
+    <script>
+        function checkPassword() {
+            const pwd = document.getElementById('password').value;
+            const resultElement = document.getElementById('result');
+
+            if (pwd.length >= 8) {
+                resultElement.innerText = "Mật khẩu hợp lệ.";
+            } else {
+                resultElement.innerText = "Mật khẩu quá ngắn.";
+            }
+        }
+    </script>
+
+</body>
+</html>

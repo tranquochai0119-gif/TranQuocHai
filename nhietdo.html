@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 13. Chuyển đổi nhiệt độ</title>
+</head>
+<body>
+
+    <h2>Chuyển đổi nhiệt độ (°C ➔ °F)</h2>
+
+    <label for="celsius">Nhập nhiệt độ (°C):</label>
+    <input type="number" id="celsius">
+    <button onclick="convertTemperature()">Chuyển đổi</button>
+
+    <p id="result"></p>
+
+    <script>
+        function convertTemperature() {
+            const inputVal = document.getElementById('celsius').value;
+            const resultElement = document.getElementById('result');
+
+            if (inputVal === "") {
+                resultElement.innerText = "Vui lòng nhập nhiệt độ.";
+                return;
+            }
+
+            const celsius = parseFloat(inputVal);
+            const fahrenheit = (9 / 5) * celsius + 32;
+
+            resultElement.innerText = celsius + " °C = " + fahrenheit + " °F";
+        }
+    </script>
+
+</body>
+</html>
